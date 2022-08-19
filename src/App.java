@@ -1,3 +1,4 @@
+//Estudantes: Pedro B. de Quadros, Lukas J. Barboza, Thiago K.
 import java.util.concurrent.Semaphore;
 
 public class App {
@@ -18,14 +19,14 @@ public class App {
             i++;
         }
 
-        Semaphore mutex_1 = new Semaphore(1);
-        Semaphore mutex_0 = new Semaphore(0);
-        Semaphore mutex_realease_1 = new Semaphore(1);
-        Semaphore mutex_realease_0 = new Semaphore(0);
+        Semaphore semaphore_1 = new Semaphore(1);
+        Semaphore semaphore_2 = new Semaphore(0);
+        Semaphore semaphore_3 = new Semaphore(1);
+        Semaphore semaphore_4 = new Semaphore(0);
 
-        Gerador t1 = new Gerador(mutex_0, mutex_1);
-        Padronizador t2   = new Padronizador(mutex_0, mutex_1, mutex_realease_0, mutex_realease_1);
-        Contador t3 = new Contador(mutex_realease_0, mutex_realease_1);
+        Gerador t1 = new Gerador(semaphore_2, semaphore_1);
+        Padronizador t2   = new Padronizador(semaphore_2, semaphore_1, semaphore_4, semaphore_3);
+        Contador t3 = new Contador(semaphore_4, semaphore_3);
 
         t1.start();
         t2.start();
